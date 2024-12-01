@@ -5,69 +5,125 @@
   <mat-card>
     <mat-card-title>Product Details</mat-card-title>
     <mat-card-content class="grid-container">
-
       <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" required />
-        <mat-error *ngIf="productForm.get('name')?.hasError('required')">
-          Name is required.
+        <mat-label>Email ID</mat-label>
+        <input matInput type="email" formControlName="emailID" required />
+        <mat-error *ngIf="productForm.get('emailID')?.hasError('required')">
+          Email ID is required.
+        </mat-error>
+        <mat-error *ngIf="productForm.get('emailID')?.hasError('email')">
+          Enter a valid email.
         </mat-error>
       </mat-form-field>
-
+      
       <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Unit Price</mat-label>
-        <input matInput type="number" formControlName="unitPrice" required />
-        <mat-error *ngIf="productForm.get('unitPrice')?.hasError('required')">
-          Unit Price is required.
+        <mat-label>Mobile No</mat-label>
+        <input matInput type="text" formControlName="mobileNo" required />
+        <mat-error *ngIf="productForm.get('mobileNo')?.hasError('required')">
+          Mobile number is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('unitPrice')?.hasError('min')">
-          Price must be greater than 0.
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Old Price</mat-label>
-        <input matInput type="number" formControlName="oldPrice" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Discount</mat-label>
-        <input matInput type="number" formControlName="discount" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Units in Stock</mat-label>
-        <input matInput type="number" formControlName="unitInStock" required />
-        <mat-error *ngIf="productForm.get('unitInStock')?.hasError('required')">
-          Units in Stock is required.
-        </mat-error>
-        <mat-error *ngIf="productForm.get('unitInStock')?.hasError('min')">
-          Units must be 0 or more.
+        <mat-error *ngIf="productForm.get('mobileNo')?.hasError('pattern')">
+          Enter a valid 10-digit mobile number.
         </mat-error>
       </mat-form-field>
-
+      
       <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Type</mat-label>
-        <mat-select formControlName="TypeID">
-          <mat-option *ngFor="let measurement of measurements" [value]="measurement?.LookupID">
-            {{ measurement?.LookupDescription }}
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" formControlName="firstName" required />
+        <mat-error *ngIf="productForm.get('firstName')?.hasError('required')">
+          First name is required.
+        </mat-error>
+        <mat-error *ngIf="productForm.get('firstName')?.hasError('maxlength')">
+          Maximum length is 50 characters.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" formControlName="lastName" required />
+        <mat-error *ngIf="productForm.get('lastName')?.hasError('required')">
+          Last name is required.
+        </mat-error>
+        <mat-error *ngIf="productForm.get('lastName')?.hasError('maxlength')">
+          Maximum length is 50 characters.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Member Type</mat-label>
+        <input matInput type="text" formControlName="memberType" required />
+        <mat-error *ngIf="productForm.get('memberType')?.hasError('required')">
+          Member type is required.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Pin Code</mat-label>
+        <input matInput type="text" formControlName="pinCode" required />
+        <mat-error *ngIf="productForm.get('pinCode')?.hasError('required')">
+          Pin code is required.
+        </mat-error>
+        <mat-error *ngIf="productForm.get('pinCode')?.hasError('pattern')">
+          Enter a valid 6-digit pin code.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Vehicle Registration No</mat-label>
+        <input matInput type="text" formControlName="vehicleRegistrationNo" required />
+        <mat-error *ngIf="productForm.get('vehicleRegistrationNo')?.hasError('required')">
+          Vehicle registration number is required.
+        </mat-error>
+        <mat-error *ngIf="productForm.get('vehicleRegistrationNo')?.hasError('maxlength')">
+          Maximum length is 50 characters.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Battery Serial No</mat-label>
+        <input matInput type="text" formControlName="batterySerialNo" required />
+        <mat-error *ngIf="productForm.get('batterySerialNo')?.hasError('required')">
+          Battery serial number is required.
+        </mat-error>
+        <mat-error *ngIf="productForm.get('batterySerialNo')?.hasError('maxlength')">
+          Maximum length is 50 characters.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Purchase Date</mat-label>
+        <input matInput type="date" formControlName="purchaseDate" required />
+        <mat-error *ngIf="productForm.get('purchaseDate')?.hasError('required')">
+          Purchase date is required.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Model</mat-label>
+        <input matInput type="text" formControlName="model" />
+        <mat-error *ngIf="productForm.get('model')?.hasError('maxlength')">
+          Maximum length is 200 characters.
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" class="grid-item">
+        <mat-label>Vehicle Type</mat-label>
+        <mat-select formControlName="vehicleType">
+          <mat-option *ngFor="let vehicle of vehicleTypes" [value]="vehicle.id">
+            {{ vehicle.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
+      
       <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Measurement</mat-label>
-        <mat-select formControlName="MesurmentID">
-          <mat-option *ngFor="let measurement of measurements" [value]="measurement?.LookupID">
-            {{ measurement?.LookupDescription }}
+        <mat-label>Product Type</mat-label>
+        <mat-select formControlName="productType">
+          <mat-option *ngFor="let product of productTypes" [value]="product.id">
+            {{ product.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field appearance="outline" class="grid-item">
-        <mat-label>Short Description</mat-label>
-        <textarea matInput formControlName="shortDescription"></textarea>
-      </mat-form-field>
+      
 
     </mat-card-content>
     <mat-card-actions>

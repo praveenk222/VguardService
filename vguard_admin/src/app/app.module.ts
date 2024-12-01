@@ -64,8 +64,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { NavComponent } from './nav/nav.component';
-import {  GetallordersComponent } from './getallorders/getallorders.component';
-import { CreateOrderComponent } from './getallorders/create-order/create-order.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './login/login.component';
@@ -85,8 +83,6 @@ import { SantrylistComponent } from './inventory/santrylist/santrylist.component
     AppComponent,
     ProductDetailsComponent,
     AddProductComponent,
-    GetallordersComponent,
-    CreateOrderComponent,
     NavComponent,
     LoginComponent,
     MeasuremetTypeComponent,

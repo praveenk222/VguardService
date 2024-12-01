@@ -78,7 +78,5 @@ export class InventoryService {
   }
 
 //api//1000
-getProductdetails(userid:number){
-  return this.http.get(this.m_apiUrl+'product/get/'+userid)
-}
+
 }

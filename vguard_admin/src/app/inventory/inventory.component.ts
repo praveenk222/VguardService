@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { SweetAlertServiceService } from '../services/sweet-alert-service.service';
+import { OrderService } from '../order.service';
 interface InventoryItem {
   title: string;
   stock: number;
@@ -35,7 +36,7 @@ export class InventoryComponent {
   santry: any;
   Elec: any;
   inventoryCount:any;
-  constructor(private productService: ProductDetailsService,private alerts:SweetAlertServiceService,
+  constructor(private productService: OrderService,private alerts:SweetAlertServiceService,
     private router:Router) {
       this.getProduct();
   }
@@ -48,7 +49,7 @@ export class InventoryComponent {
 
   }
   getProduct() {
-    this.productService.getProductDetails().subscribe((res: any) => {
+    this.productService.getAllProducts().subscribe((res: any) => {
     
       if(res){
 this.plumb=res.filter((x:any)=>x.CategoryID == 1);
@@ -60,12 +61,6 @@ this.Elec=res.filter((x:any)=>x.CategoryID == 3);
     });
   }
   getInventory() {
-    this.productService.getInventryCount().subscribe((res: any) => {
-    
-      if(res){
-
-        this.inventoryCount=res;
-      }
-    });
+  
   }
 }

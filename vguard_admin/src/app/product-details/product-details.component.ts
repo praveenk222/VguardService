@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { SweetAlertServiceService } from '../services/sweet-alert-service.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-product-details',
@@ -19,7 +20,7 @@ export class ProductDetailsComponent {
   totalItems: number = 100;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private productService: ProductDetailsService,private alerts:SweetAlertServiceService,
+  constructor(private apiService: OrderService,private alerts:SweetAlertServiceService,
     private router:Router) {
     this.getProduct();
   }
@@ -29,7 +30,7 @@ export class ProductDetailsComponent {
   }
 
   getProduct() {
-    this.productService.getProductDetails().subscribe((res: any) => {
+    this.apiService.getProductdetails().subscribe((res: any) => {
       this.dataSource.data = res;
       if(res){
 
@@ -39,33 +40,15 @@ export class ProductDetailsComponent {
   }
   editProduct(id: any) {
     this.router.navigateByUrl(`addproduct/${id}`);
-  //  this.productService.updateProduct(product.ProductID,product).subscribe((res) => {
-  //   console.log(res)
-  //  });
-  //   console.log('Edit Product:', product);
-    // this.dialog.open(EditProductDialog, { data: product });
+
   }
 
-  // Delete product
-  // deleteProduct(product: any) {
-  //   if (confirm('Are you sure you want to delete this product?')) {
-  //     this.productService.deleteProduct(product).subscribe((res) => {
-  //       console.log(res)
-  //     });
-  //   }
-  newFunction(product: any) {
-      this.productService.deleteProduct(product).subscribe((res) => {
-        console.log(res)
-        this.getProduct();
-      });
-  }
 
   deleteProduct(data:any){
     this.alerts.showConfirmation('Confirm Action', 'Are you sure you want to proceed?')
     .then((confirmed) => {
       if (confirmed) {
         data.IsActive=false;
-        this.newFunction(data);
         console.log('User confirmed the action');
         // Perform the action
       } else {

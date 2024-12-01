@@ -26,6 +26,7 @@ router.post('/members', async (req, res) => {
         ParentID: req.body.ParentID,
         IsRegisteredByMobile: req.body.IsRegisteredByMobile,
         PinCode:req.body.PinCode,
+        
       });
   
       // Save the member to the database

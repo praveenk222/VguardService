@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ProductDetailsService } from '../../services/product-details.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SweetAlertServiceService } from '../../services/sweet-alert-service.service';
+import { OrderService } from '../../order.service';
 
 @Component({
   selector: 'app-add-product',
@@ -14,35 +15,14 @@ export class AddProductComponent  implements OnInit{
   productForm:FormGroup;
   measurements:any;
   pid:any=0;
-
-  constructor(private productService:ProductDetailsService,    private route: ActivatedRoute, 
+  productTypes:[];
+  vehicleTypes:[];
+  constructor(private productService:OrderService,    private route: ActivatedRoute, 
     private spinners:NgxSpinnerService,private fb:FormBuilder,
     private router:Router,private alertsr:SweetAlertServiceService){
     
    this.pid= this.route.snapshot.paramMap.get('id')!;
-  //  this.productForm =this.pf.group({
   
-  //   name: ['', Validators.required],
-  //   unitPrice: ['', [Validators.required, Validators.min(0)]],
-  //   oldPrice: [''],
-  //   discount: [''],
-  //   unitInStock: ['', [Validators.required, Validators.min(0)]],
-  //   productAvailable: [false],
-  //   shortDescription: [''],
-  //   supplierID: [4],  // Initialize with default values
-  //   TypeID: [''],
-  //   "MeasurementValue":'0',
-  //   "categoryID":1,
-  //   IsActive:[true],    
-  //   MesurmentID: [''],
-  //   picturePath: [''],
-  //   note: [''],
-  //   createdBy: ['Admin']
-
-
- 
-
-  //  })
   }
   ngOnInit(){
   if(this.pid > 0){
@@ -51,31 +31,34 @@ export class AddProductComponent  implements OnInit{
   }
   this.getMeasurement()
   this.productForm = this.fb.group({
-    productID: [null], // Hidden or optional field
-    name: ['', Validators.required],
-    supplierID: [1],  // Initialize with default values
-    categoryID: [null, ],
-    subCategoryID: [null],
-    unitPrice: ['', [Validators.required, Validators.min(0)]],
-    oldPrice: [''],
-    discount: [''],
-    unitInStock: ['', [Validators.required, Validators.min(0)]],
-    productAvailable: [false],
-    shortDescription: [''],
-    picturePath: [''],
-    note: [''],
-    createdBy: ['Admin'], // Default value
-    createdOn: [new Date().toISOString()], // Default value with the current date
-    modifiedBy: [null],
-    modifiedOn: [null],
-    isActive: [true],
-    TypeID: [''],
-    "MeasurementValue":'0',
-    MesurmentID: [''],
+    productID: [null, [Validators.required]], // Required field
+    productName: ['', [Validators.maxLength(150)]], // Optional with max length
+    vehicleRegistrationNo: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
+    batterySerialNo: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
+    purchaseDate: [null, [Validators.required]], // Required field
+    model: ['', [Validators.maxLength(200)]], // Optional with max length
+    category: [null], // Optional
+    quantity: [null], // Optional
+    brand: ['', [Validators.maxLength(50)]], // Optional with max length
+    size: ['', [Validators.maxLength(100)]], // Optional with max length
+    isActive: [true, [Validators.required]], // Required field with default value
+    createdOn: [new Date(), []], // Default to current date
+    modifiedOn: [null], // Optional
+    lastServiceDate: [null], // Optional
+    vehicleType: [null], // Optional
+    productType: [null] ,
+      // Newly added fields
+      emailID: ['', [Validators.required, Validators.email]], // Required and valid email
+      mobileNo: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Required, 10-digit number
+      firstName: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
+      lastName: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
+      memberType: ['', [Validators.required]], // Required field
+      pinCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]], // Required, 6-digit pin code
+    // Optional
   });
 }
 getPoruductByID(){
-  this.productService.getProductDetailsById(this.pid).subscribe(res=>{
+  this.productService.getProductdetails(this.pid).subscribe(res=>{
     console.log(res);
     this.productForm.patchValue(res[0]);
   })
@@ -85,7 +68,7 @@ getPoruductByID(){
     const data=this.productForm.value;
    
     if (this.productForm.valid) {
-      this.productService.addProduct(data).subscribe((res: any) => {
+      this.productService.createProduct(data).subscribe((res: any) => {
       if(res.isSuccess){
         this.alertsr.showSuccess('Product',res.Message);
         this.spinners.hide();
@@ -102,7 +85,7 @@ getPoruductByID(){
 
 }
 getMeasurement(){
-  this.productService.getMeasurement().subscribe((res: any) => {
+  this.productService.getLookupList().subscribe((res: any) => {
     this.measurements=res
     console.log(res)
   
