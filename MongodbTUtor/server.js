@@ -19,6 +19,7 @@ const lookupController = require('./Controller/config_lookup.controller');
 const stockController = require('./Controller/stock.controller');
 const invoiceController = require('./Controller/invoiceHeader.controller');
 const invoiceDetailsController = require('./Controller/invoiceDetails.controller');
+const batteryRegisterMasterController = require('./Controller/batteryregister.controller');
 const app=express()
 
 
@@ -67,4 +68,5 @@ app.use('/api',lookupController);
 app.use('/api',stockController);
 app.use('/api',invoiceController);
 app.use('/api',invoiceDetailsController);
+app.use('/api',batteryRegisterMasterController);
 app.listen(3001,()=>{console.log("server is running")})
