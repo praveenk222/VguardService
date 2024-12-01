@@ -2,27 +2,20 @@ const mongoose = require('mongoose');
 
 const productMasterSchema = new mongoose.Schema({
   ProductID: { type: Number, required: true, unique: true },
-  BranchID: { type: Number, required: true },
   ProductName: { type: String, maxlength: 150 },
-  RegistrationNo: { type: String, maxlength: 50 },
-  RegistrationDate: { type: Date },
+  VehicleRegistrationNo: { type: String, maxlength: 50,required: true },
+  BatterySerialNo: { type: String, maxlength: 50 , required: true,},
+  PurchaseDate: { type: Date, required: true, },
   Model: { type: String, maxlength: 200 },
   Category: { type: Number },
   Quntity: { type: Number },
   Brand: { type: String, maxlength: 50 },
   Size: { type: String, maxlength: 100 },
-  Color: { type: String, maxlength: 50 },
-  ImageName: { type: String, maxlength: 150 },
-  ImageID: { type: Number, required: true },
   IsActive: { type: Boolean, required: true },
-  IsAvailable: { type: Boolean },
   CreatedOn: { type: Date, default: Date.now },
   ModifiedOn: { type: Date },
-  EstablishedDate: { type: Date },
-  Condition: { type: Number },
   LastServiceDate: { type: Date },
-  VehicleModel: { type: Number },
-  Price: { type: Number },
+  VehicleType: { type: Number },
   ProductType: { type: Number }
 });
 

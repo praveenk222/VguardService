@@ -17,4 +17,7 @@ export class OrderService {
   createOrder(data:any):Observable<any>{
     return this.http.post(this.apiUrl+`/orders`,data)
   }
+  createUser(data:any):Observable<any>{
+    return this.http.post(this.apiUrl+`members`,data)
+  }
 }

@@ -10,7 +10,7 @@ const router = require('express').Router();
 
 
 // CREATE: Add a new product
-router.post('/productMasters', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const product = new ProductMaster(req.body);
     const savedProduct = await product.save();

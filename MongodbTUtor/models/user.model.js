@@ -20,7 +20,8 @@ const memberSchema = new Schema({
   ProfilePhoto: { type: String, required: false },
   Token: { type: String, required: false },
   ParentID: { type: String, required: false },
-  IsRegisteredByMobile: { type: Boolean, default: false }
+  IsRegisteredByMobile: { type: Boolean, default: false },
+  PinCode:{ type: Number, required: false },
 });
 
 module.exports = mongoose.model('Member', memberSchema);

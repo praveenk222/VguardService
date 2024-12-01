@@ -25,6 +25,7 @@ router.post('/members', async (req, res) => {
         Token: req.body.Token,
         ParentID: req.body.ParentID,
         IsRegisteredByMobile: req.body.IsRegisteredByMobile,
+        PinCode:req.body.PinCode,
       });
   
       // Save the member to the database
@@ -64,6 +65,16 @@ router.post('/login',(req,res)=>{
 router.get('/profile',(req,res)=>{
     const userId=req.userData.userId;
 User.findById(userId)
+.exec()
+    .then((result)=>{
+        res.json({success:true,data:result})
+    }).catch((err)=>{
+        res.json({success:false,message:"server error"})
+    })
+  
+})
+router.get('/users',(req,res)=>{
+    Member.find()
 .exec()
     .then((result)=>{
         res.json({success:true,data:result})
