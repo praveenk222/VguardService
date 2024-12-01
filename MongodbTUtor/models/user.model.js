@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
-  UserID: { type: Number, required: false },
   EmailID: { type: String, required: false },
   MobileNo: { type: String, required: true },
   Password: { type: String, required: false },

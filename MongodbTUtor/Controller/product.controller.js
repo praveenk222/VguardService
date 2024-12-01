@@ -17,12 +17,14 @@ router.post('/productMasters', async (req, res) => {
     // Save Product data
   console.log(req.body);
   console.log(req.body.productData);
+  const user = new Member(userData);
+  const savedUser = await user.save();
+productData.MemberID= user._id
     const product = new ProductMaster(productData);
     const savedProduct = await product.save();
 
     // Save User data
-    const user = new Member(userData);
-    const savedUser = await user.save();
+    
 
     // Respond with saved data
     res.status(201).json({
@@ -39,6 +41,15 @@ router.post('/productMasters', async (req, res) => {
 router.get('/productMasters', async (req, res) => {
   try {
     const products = await ProductMaster.find();
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+router.get('/UserBatteryList', async (req, res) => {
+  try {
+    const products = await ProductMaster.find().populate('Member');
+  // const products=  db.customer.aggregate([$lookup:{from:"orders",localField:"orders",foreignField:"_id",as:"orderDetails"}])
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const productMasterSchema = new mongoose.Schema({
-  ProductID: { type: Number, required: true, unique: true },
+  MemberID: { type:  mongoose.Schema.Types.ObjectId,  },
   ProductName: { type: String, maxlength: 150 },
   VehicleRegistrationNo: { type: String, maxlength: 50,required: true },
   BatterySerialNo: { type: String, maxlength: 50 , required: true,},
@@ -16,7 +16,8 @@ const productMasterSchema = new mongoose.Schema({
   ModifiedOn: { type: Date },
   LastServiceDate: { type: Date },
   VehicleType: { type: Number },
-  ProductType: { type: Number }
+  ProductType: { type: Number },
+  Member: { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
 });
 
 const ProductMaster = mongoose.model('ProductMaster', productMasterSchema);
