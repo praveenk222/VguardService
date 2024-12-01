@@ -1,0 +1,33 @@
+<!-- inventory-page.component.html -->
+<div class="card-container">
+    <mat-card class="inventory-card" *ngFor="let item of inventoryCount">
+      <mat-card-header>
+        <mat-card-title>{{ item.LookupDescription }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Stock: {{ item.ProductCount }}</p>
+        <!-- <p>Price: {{ item.LookupDescription | currency }}</p> -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="container">
+  <mat-card class="tabs-card">
+    <mat-card-header>
+      <mat-card-title>Inventory Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group (selectedTabChange)="selectedTabValue($event)">
+        <mat-tab label="Plumbing">
+          <app-plumbing-list *ngIf="plumb" [parentData]="plumb"> </app-plumbing-list>
+        </mat-tab>
+        <mat-tab label="Sanitary">
+         <app-santrylist *ngIf="santry" [parentData]="santry"></app-santrylist>
+        </mat-tab>
+        <mat-tab label="Electric">
+          <app-electric-list *ngIf="Elec" [parentData]="Elec"></app-electric-list>
+         
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

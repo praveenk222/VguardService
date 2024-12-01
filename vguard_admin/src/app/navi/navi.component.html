@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="showHead">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      
+    <mat-toolbar class="side-nav-toolbar" >
+      <img src="../../assets/img/Logo.png" alt="">
+      <svg width="120" height="30" viewBox="0 0 147 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="EVER">
+        <path d="M32.0103 30.3649H0.780273V0.166687H32.0103V4.48372H5.09731V26.0478H32.0103V30.3649ZM28.3461 17.4348H7.2453V13.1178H28.3461V17.4348Z" fill="white"/>
+        <path d="M71.0742 0.166687L55.196 30.3649H50.2682L34.411 0.166687H39.3177L52.7321 25.7109L66.1465 0.166687H71.0742Z" fill="white"/>
+        <path d="M106.558 30.3649H75.3281V0.166687H106.558V4.48372H79.6451V26.0478H106.558V30.3649ZM102.894 17.4348H81.7931V13.1178H102.894V17.4348Z" fill="white"/>
+        <path d="M146.78 30.3649H140.947L131.892 21.7308H118.667V17.4769H135.998C136.897 17.4769 137.739 17.3085 138.525 16.9715C139.311 16.6206 139.992 16.1502 140.568 15.5606C141.158 14.971 141.621 14.283 141.958 13.4968C142.295 12.6966 142.463 11.8472 142.463 10.9487C142.463 10.0502 142.295 9.20789 141.958 8.4217C141.621 7.63551 141.158 6.95461 140.568 6.37901C139.992 5.78936 139.311 5.32607 138.525 4.98913C137.739 4.65219 136.897 4.48372 135.998 4.48372H116.245V30.3649H111.928V0.166687H135.998C137.486 0.166687 138.883 0.454489 140.189 1.03009C141.495 1.59166 142.632 2.36381 143.6 3.34655C144.583 4.31525 145.355 5.45242 145.917 6.75806C146.492 8.0637 146.78 9.4606 146.78 10.9487C146.78 12.2965 146.549 13.5741 146.085 14.7814C145.622 15.9748 144.983 17.0487 144.169 18.0034C143.355 18.944 142.393 19.7302 141.284 20.362C140.189 20.9797 139.003 21.3939 137.725 21.6045L146.78 30.3649Z" fill="white"/>
+        </g>
+        </svg>
+   
+  </mat-toolbar>
+    
+    <mat-nav-list>
+      <!-- <a  [routerLink]="m.link"  *ngFor="let m of menu" class="nav-item" > -->
+        <!-- <mat-icon>input</mat-icon> -->
+    
+        <!-- <div class="header-links">
+          
+        <span class="links" routerLinkActive="active" ><mat-icon  class="icon">{{m.icon}}</mat-icon>{{m.TabName}}</span>
+      </div>
+      </a> -->
+     <div class="container">
+      <a mat-list-item [routerLink]="m.link" routerLinkActive="active"  *ngFor="let m of menu" class="nav-item" > 
+        <mat-icon  class="icon">{{m.icon}}</mat-icon>
+        <span class="links" >{{m.TabName}}</span> 
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+   
+      <span class="example-spacer"></span>
+
+      <app-profile></app-profile>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<router-outlet *ngIf="!showHead"></router-outlet>

@@ -1,0 +1,87 @@
+<mat-card>
+    <!-- <mat-card-title>Lookup Management</mat-card-title> -->
+    <div style="display: flex; align-items: flex-end; justify-content: flex-end; margin-bottom: 16px;">
+        <button mat-button mat-button mat-raised-button color="primary" (click)="add()">Add </button>
+      </div>
+    <mat-card-content >
+      <form [formGroup]="lookupForm" (ngSubmit)="createNewLookup()" *ngIf="isShow">
+        <mat-form-field appearance="fill">
+          <mat-label>Lookup Code</mat-label>
+          <input matInput formControlName="LookupCode" >
+          <mat-error *ngIf="lookupForm.get('LookupCode')?.invalid">Lookup Code is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Lookup Description</mat-label>
+          <input matInput formControlName="LookupDescription" required>
+          <mat-error *ngIf="lookupForm.get('LookupDescription')?.invalid">Lookup Description is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Lookup Category</mat-label>
+          <input matInput formControlName="LookupCategory" required>
+          <mat-error *ngIf="lookupForm.get('LookupCategory')?.invalid">Lookup Category is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="Status">
+            <mat-option [value]="1">Active</mat-option>
+            <mat-option [value]="0">Inactive</mat-option>
+          </mat-select>
+        </mat-form-field>
+ 
+  
+        <div>
+        
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="lookupForm.invalid">
+            Create Lookup
+          </button>
+      </form>
+  
+      <div *ngIf="lookups.length">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="CustomerID">
+              <th mat-header-cell *matHeaderCellDef>  ID </th>
+              <td mat-cell *matCellDef="let element"> {{ element.LookupID }} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="TotalAmount">
+              <th mat-header-cell *matHeaderCellDef> Name</th>
+              <td mat-cell *matCellDef="let element"> {{ element.LookupDescription  }} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="OrderDate">
+              <th mat-header-cell *matHeaderCellDef> Type </th>
+              <td mat-cell *matCellDef="let element"> {{ element.LookupCategory }} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="IsCompleted">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element"> {{ element.IsActive }} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button color="primary" (click)="editProduct(element.ProductID)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="deleteProduct(element)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+      
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      </div>
+      <div *ngIf="!lookups.length">
+        <p>No lookups found.</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+  

@@ -1,0 +1,29 @@
+
+<div id="receipt">
+    <div class="header">
+      <img src="../../assets/img/Logo.png" alt="Company Logo" class="logo">
+      <h1>Order Receipt</h1>
+    </div>
+  
+    <div class="order-details">
+      <p><strong>Order ID:</strong> {{ order.id }}</p>
+      <p><strong>Customer Name:</strong> {{ order.customerName }}</p>
+      <p><strong>Date:</strong> {{ order.date }}</p>
+    </div>
+  
+    <h3>Items:</h3>
+    <ul class="item-list">
+      <li *ngFor="let item of order.items">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">${{ item.price.toFixed(2) }}</span>
+      </li>
+    </ul>
+  
+    <div class="total">
+      <p><strong>Total:</strong> ${{ order.total.toFixed(2) }}</p>
+    </div>
+  
+    <button (click)="downloadPDF()">Download PDF</button>
+  </div>
+  
+  

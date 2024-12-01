@@ -1,0 +1,39 @@
+<div id="invoice" class="invoice">
+  <div class="header">
+    <h2>HANUMAN MARKETING</h2>
+    <p>Wholesale Dealer: PVC Wires & Cables, All Electrical Goods, Fan, Regulator, Spike Guard, LED Street & Flood Lights, Anchor & GoldMedal</p>
+    <p>Address: Dubba Road, Nizamabad</p>
+    <p>Cell: 9785717760, 8276863243</p>
+    <p>Date: {{ invoiceDate | date: 'dd-MM-yyyy' }}</p>
+    <p>Customer: {{ customerName }}</p>
+  </div>
+
+  <table class="items-table">
+    <thead>
+      <tr>
+        <th>Particulars</th>
+        <th>Qty.</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price  }}</td>
+        <td>{{ item.amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="total-section">
+    <p>Total: {{ calculateTotal()  }}</p>
+    <p>Tax: {{ tax  }}</p>
+    <p><strong>Grand Total: {{ calculateGrandTotal()  }}</strong></p>
+  </div>
+
+  <p class="footer">This receipt is valid only if signed and stamped by an authorized person.</p>
+</div>
+
+<button (click)="printInvoice()">Print Invoice</button>

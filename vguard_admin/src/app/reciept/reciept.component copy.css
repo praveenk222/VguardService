@@ -1,0 +1,90 @@
+#receipt {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 80px;
+    margin-bottom: 10px;
+  }
+  
+  h1 {
+    color: #333;
+    font-size: 28px;
+  }
+  
+  .order-details {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  h3 {
+    color: #444;
+    margin-top: 20px;
+  }
+  
+  .item-list {
+    list-style-type: none;
+    padding: 0;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  .item-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .item-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .item-name {
+    font-weight: 500;
+  }
+  
+  .item-price {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+    color: #333;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

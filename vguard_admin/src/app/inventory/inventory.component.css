@@ -1,0 +1,54 @@
+/* inventory-page.component.css */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* spacing between cards */
+    justify-content: space-between; /* distribute cards evenly */
+    padding: 16px; /* padding around the card container */
+  }
+  
+  .inventory-card {
+    flex: 1 1 calc(25% - 16px); /* four cards per row with spacing */
+    min-width: 250px; /* minimum width for cards */
+    border-radius: 8px; /* rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    transition: transform 0.2s; /* smooth hover effect */
+  }
+  
+  .inventory-card:hover {
+    transform: translateY(-4px); /* lift effect on hover */
+  }
+  
+  .tabs-card {
+    margin-top: 16px; /* spacing above the tabs card */
+    border-radius: 8px; /* rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    padding: 16px; /* padding inside the card */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse; /* collapse borders */
+    margin-top: 16px; /* spacing above tables */
+  }
+  
+  th.mat-header-cell {
+    background-color: #f5f5f5; /* light gray background for header */
+    font-weight: bold; /* bold font for headers */
+    padding: 12px; /* padding inside headers */
+    text-align: left; /* left align text */
+    border-bottom: 2px solid #ccc; /* border at the bottom */
+  }
+  
+  td.mat-cell {
+    padding: 12px; /* padding inside cells */
+    border-bottom: 1px solid #e0e0e0; /* light border between rows */
+  }
+  
+  .mat-tab-label {
+    font-weight: bold; /* bold font for tab labels */
+  }
+  .container{
+    padding: 0.5%;
+  }
+  

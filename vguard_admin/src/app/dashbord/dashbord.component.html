@@ -1,0 +1,61 @@
+
+
+<div class="dashboard-container" fxLayout="column" fxLayoutAlign="start stretch">
+
+    <mat-toolbar style="background: none;">
+      <h1 class="mat-h1">Dashboard</h1>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="primary" style="border-radius: 24px;">Generate Report</button>
+    </mat-toolbar>
+  
+    <div class="cards-container" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between start">
+      
+      <mat-card class="dashboard-card" style="background: #E0F7FA;" fxFlex="24%" fxFlex.xs="100%" style="margin: 10px;">
+        <mat-card-header>
+        
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div style="font-size: 24px;">Total Revenue</div>
+          <div class="total">₹ 76,100</div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="dashboard-card" style="background: #E0F7FA;" fxFlex="24%" fxFlex.xs="100%" style="margin: 10px;">
+        <mat-card-header>
+        
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div style="font-size: 24px;">Total Inventory</div>
+          <div class="total">760</div>
+        </mat-card-content>
+      </mat-card>
+  
+   
+    
+  
+    </div>
+    <div class="cards-container">
+    <mat-card class="dashboard-card1" style="background: #E8F5E9;" fxFlex="24%" fxFlex.xs="100%" style="margin: 10px;">
+      <mat-card>
+        <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [type]="'bar'">
+      </canvas>
+      </mat-card>
+    </mat-card>
+  
+
+  
+  <mat-card class="dashboard-card1">
+  <canvas baseChart
+          [datasets]="[{ data: pieChartData }] "  
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend"
+    
+          [type]="'pie'">
+  </canvas>
+</mat-card>
+</div>

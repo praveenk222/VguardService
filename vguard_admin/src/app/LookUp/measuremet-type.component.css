@@ -1,0 +1,37 @@
+/* Styles for the form container */
+form {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    justify-content: space-between; /* Space out items evenly */
+    gap: 16px; /* Space between form fields */
+  }
+  
+  /* Styles for individual form fields */
+  mat-form-field {
+    flex: 1 0 0 0; /* Flex-grow, flex-shrink, and basis for three columns */
+    min-width: 250px; /* Minimum width to maintain usability */
+  }
+  
+  /* Adjust for smaller screens */
+  @media (max-width: 768px) {
+    mat-form-field {
+      flex: 1 1 100%; /* Stack form fields on smaller screens */
+    }
+  }
+  
+  /* Additional styles for the card layout */
+  mat-card {
+    margin: 20px; /* Margin around the card */
+    padding: 20px; /* Padding inside the card */
+  }
+  
+  /* Button styles */
+  button {
+    margin-top: 16px; /* Space above the button */
+  }
+  
+  /* Styles for error messages */
+  mat-error {
+    font-size: 12px; /* Smaller font size for error messages */
+  }
+  

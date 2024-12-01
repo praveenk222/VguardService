@@ -1,0 +1,52 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.cards-container {
+  display: flex;
+  flex-flow: wrap row;
+  align-items: center;
+  justify-content: space-evenly;
+  row-gap: 20px;
+  column-gap: 20px;
+}
+
+.dashboard-card {
+  width: 300px;
+  height: 200px;
+}
+
+.revenue-section {
+ width: 400px;
+ height: 300px;
+}
+
+.total-revenue-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.revenue-by-location {
+  margin-top: 10px;
+}
+
+.revenue-location {
+  margin: 5px 0;
+}
+.dashboard-card1 {
+  width: 600px;
+  height: 400px;
+}
+.example-spacer{
+  flex: 1 0 0;
+}
+.dashboard-card-content .total{
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+._20-9{
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -130,3 +130,4 @@ dist
 .pnp.*
 VGuardBatteryUI/.editorconfig
 VGuardBatteryUI/.angular/cache/*
+vguard_admin/.angular/cache/*

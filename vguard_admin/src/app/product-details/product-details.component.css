@@ -1,0 +1,37 @@
+.table-container {
+  overflow-x: auto; /* Allows horizontal scrolling on small screens */
+}
+
+.mat-table {
+  width: 100%; /* Ensure the table uses full width */
+}
+.btnclass{
+  border-radius: 24px;border-radius: 24px;
+      float: inline-end;
+      margin-left: -61px;
+      margin-top: -59px;
+}
+@media (max-width: 600px) {
+  .mat-table {
+    font-size: 0.8em; /* Smaller font size for mobile */
+  }
+
+  /* Stack table headers on small screens */
+  th.mat-header-cell {
+    display: none; /* Hide header cells */
+  }
+
+  /* Create a responsive layout for each cell */
+  td.mat-cell {
+    display: block; /* Block display for stacking */
+    padding: 8px 0; /* Padding for cells */
+    border-bottom: 1px solid #e0e0e0; /* Optional: border for separation */
+  }
+
+  td.mat-cell:before {
+    content: attr(data-title); /* Show title based on data-title attribute */
+    font-weight: bold; /* Bold titles */
+    display: inline-block; /* Inline block for titles */
+    margin-right: 8px; /* Space between title and content */
+  }
+}

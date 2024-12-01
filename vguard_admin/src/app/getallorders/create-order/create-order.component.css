@@ -1,0 +1,14 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between items */
+}
+
+.flex-item {
+  flex: 1 1 calc(33.33% - 20px); /* Three columns layout */
+  min-width: 250px; /* Minimum width for responsiveness */
+}
+
+mat-card-content {
+  padding: 20px;
+}

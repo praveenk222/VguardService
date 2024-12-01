@@ -1,0 +1,246 @@
+// @use '@angular/material' as mat;
+
+
+// @include mat.core();
+
+
+
+
+
+// $my-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// // The "warn" palette is optional and defaults to red if not specified.
+// $my-warn: mat.define-palette(mat.$red-palette);
+
+// $my-theme: mat.define-light-theme((
+//  color: (
+//    primary: $my-primary,
+//    accent: $my-accent,
+//    warn: $my-warn,
+//  ),
+//  typography: mat.define-typography-config(),
+//  density: 0,
+// ));
+// $my-theme-dark: mat.define-dark-theme((
+//  color: (
+//    primary: $my-primary,
+//    accent: $my-accent,
+//    warn: $my-warn,
+//  ),
+
+// ));
+//  .theme-dark{
+//     @include mat.all-component-colors($my-theme-dark);
+//  }
+
+//  .theme-light{
+//      @include mat.all-component-colors($my-theme);
+//  }
+
+:root {
+    /* Colors */
+    --primary: #3355b9;
+  
+    /* Fonts */
+    --heading-font-family: Archivo-SemiBold, sans-serif;
+    --heading-font-size: 24px;
+    --heading-line-height: normal;
+    --heading-font-weight: 600;
+    --heading-font-style: normal;
+  
+    /* Effects */
+  }
+
+  /* profile */
+  /* Figma Styles of your File */
+:root {
+    /* Colors */
+    --primary: #3355b9;
+  
+    /* Fonts */
+    --heading-font-family: Archivo-SemiBold, sans-serif;
+    --heading-font-size: 24px;
+    --heading-line-height: normal;
+    --heading-font-weight: 600;
+    --heading-font-style: normal;
+  
+    /* Effects */
+  }
+  
+  /* profile */
+
+  /* dashbord */
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* dashbord */
+
+  /* customers */
+
+
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* customers */
+
+  /* inventory */
+
+
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* inventory */
+
+  /* NOTIFICATION */
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* NOTIFICATION */
+
+  /* complains */
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* complains */
+  /* bookinghistory */
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* bookinghistory */
+
+  /* errorpopup */
+
+
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* errorpopup */
+
+  /* allbikes */
+  /* Figma Styles of your File */
+:root {
+  /* Colors */
+  --primary: #3355b9;
+
+  /* Fonts */
+  --heading-font-family: Archivo-SemiBold, sans-serif;
+  --heading-font-size: 24px;
+  --heading-line-height: normal;
+  --heading-font-weight: 600;
+  --heading-font-style: normal;
+
+  /* Effects */
+}
+
+  /* allbikes */
+
+  .frame-8073 {
+    background: var(--primary, #3355b9);
+    border-radius: 10px;
+    padding: 16px 20px 16px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width:100px;
+    height: 46px;
+    position: relative;
+    border: none;
+  }
+  .create-notification {
+    color: #ffffff;
+    text-align: left;
+    font-family: "OpenSansHebrew-Bold", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+  }
+ 

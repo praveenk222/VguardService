@@ -1,0 +1,105 @@
+<mat-card>
+  <mat-card-title>Create Order</mat-card-title>
+  <form [formGroup]="orderForm" (ngSubmit)="createOrder()" >
+  <mat-card-content class="flex-container">
+ 
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Customer ID</mat-label>
+        <input matInput formControlName="CustomerID" required>
+        <mat-error *ngIf="orderForm.get('CustomerID')?.invalid">Customer ID is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Payment ID</mat-label>
+        <input matInput formControlName="PaymentID" required>
+        <mat-error *ngIf="orderForm.get('PaymentID')?.invalid">Payment ID is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Shipping ID</mat-label>
+        <input matInput formControlName="ShippingID" required>
+        <mat-error *ngIf="orderForm.get('ShippingID')?.invalid">Shipping ID is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Discount</mat-label>
+        <input matInput formControlName="Discount" type="number" step="0.01">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Taxes</mat-label>
+        <input matInput formControlName="Taxes" type="number" step="0.01">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Total Amount</mat-label>
+        <input matInput formControlName="TotalAmount" type="number" required>
+        <mat-error *ngIf="orderForm.get('TotalAmount')?.invalid">Total Amount is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Order Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="OrderDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="orderForm.get('OrderDate')?.invalid">Order Date is required</mat-error>
+      </mat-form-field>
+
+     
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Dispatched Date</mat-label>
+        <input matInput [matDatepicker]="dispatchPicker" formControlName="DispatchedDate">
+        <mat-datepicker-toggle matSuffix [for]="dispatchPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dispatchPicker></mat-datepicker>
+      </mat-form-field>
+
+     
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Shipping Date</mat-label>
+        <input matInput [matDatepicker]="shippingPicker" formControlName="ShippingDate">
+        <mat-datepicker-toggle matSuffix [for]="shippingPicker"></mat-datepicker-toggle>
+        <mat-datepicker #shippingPicker></mat-datepicker>
+      </mat-form-field>
+
+    
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Delivery Date</mat-label>
+        <input matInput [matDatepicker]="deliveryPicker" formControlName="DeliveryDate">
+        <mat-datepicker-toggle matSuffix [for]="deliveryPicker"></mat-datepicker-toggle>
+        <mat-datepicker #deliveryPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="flex-item">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="Notes"></textarea>
+      </mat-form-field>
+      <div class="flex-item">
+        <mat-checkbox formControlName="IsCompleted">Is Completed</mat-checkbox>
+      </div>
+
+      <div class="flex-item">
+        <mat-checkbox formControlName="Dispatched">Dispatched</mat-checkbox>
+      </div>
+
+      <div class="flex-item">
+        <mat-checkbox formControlName="Deliver">Deliver</mat-checkbox>
+      </div>
+      <div class="flex-item">
+        <mat-checkbox formControlName="Shipped">Shipped</mat-checkbox>
+      </div>
+      <div class="flex-item">
+        <mat-checkbox formControlName="CancelOrder">Cancel Order</mat-checkbox>
+      </div>
+
+    
+
+   
+  </mat-card-content>
+  <button mat-raised-button color="primary" type="submit" [disabled]="orderForm.invalid" >
+    Create Order
+  </button>
+</form>
+</mat-card>
