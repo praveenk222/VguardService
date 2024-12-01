@@ -37,8 +37,47 @@ router.get('/batteryMaster', async (req, res) => {
   }
 });
 
+async function getLoginDetails(serialNo, mobileNo) {
+  try {
+    const user = await BatteryProduct.findOne({
+      $or: [
+        { BatterySerialNo: serialNo },
+        { MobileNo: mobileNo }
+      ]
+    });
+console.log(user);
+console.log(serialNo,mobileNo);
 
+    if (user) {
+      return {
+        success: true,
+        message: "User found",
+        data: user
+      };
+    } else {
+      return {
+        success: false,
+        message: "No user found with the provided Serial Number and Mobile Number"
+      };
+    }
+  } catch (error) {
+    console.error("Error fetching login details: ", error);
+    return {
+      success: false,
+      message: "An error occurred while fetching login details"
+    };
+  }
+}
 // READ: Get a product by ID
+router.post('/batteryMaster/Login', async (req, res) => {
+  const serialNo = req.body.BatterySerialNo; // Replace with the actual BatterySerialNo
+  const mobileNo = req.body.MobileNo;    // Replace with the actual MobileNo
+  console.log(req.body);
+
+  const result = await getLoginDetails(serialNo, mobileNo);
+  console.log(result);
+  res.status(200).json(result);
+});
 router.get('/batteryMaster/:id', async (req, res) => {
   try {
     const product = await BatteryProduct.findById(req.params.id);

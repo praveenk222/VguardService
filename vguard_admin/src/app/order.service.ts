@@ -11,16 +11,22 @@ export class OrderService {
   apiUrl=environment.apiurl;
   constructor(private http:HttpClient) { }
 
-
-  getLookupList():Observable<any>{
-    return this.http.get(this.apiUrl+`members`)
+  Login(data:any):Observable<any>{
+    return this.http.post(this.apiUrl+`batteryMaster/Login`,data)
   }
+  getLookupList():Observable<any>{
+    return this.http.get(this.apiUrl+`Lookup`)
+  }
+  //users
   createUser(data:any):Observable<any>{
     return this.http.post(this.apiUrl+`members`,data)
   }
   getAllUsers():Observable<any>{
     return this.http.get(this.apiUrl+`members`)
   }
+  //users
+  //product
+
   createProduct(data:any):Observable<any>{
     return this.http.post(this.apiUrl+`productMasters`,data)
   }
@@ -30,4 +36,6 @@ export class OrderService {
   getProductdetails(id:number):Observable<any>{
     return this.http.get(this.apiUrl+`productMasters`)
   }
+  //product
+ 
 }
