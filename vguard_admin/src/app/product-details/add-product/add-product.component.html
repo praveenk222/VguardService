@@ -7,85 +7,85 @@
     <mat-card-content class="grid-container">
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Email ID</mat-label>
-        <input matInput type="email" formControlName="emailID" required />
-        <mat-error *ngIf="productForm.get('emailID')?.hasError('required')">
+        <input matInput type="email" formControlName="EmailID"  />
+        <mat-error *ngIf="productForm.get('EmailID')?.hasError('required')">
           Email ID is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('emailID')?.hasError('email')">
+        <mat-error *ngIf="productForm.get('EmailID')?.hasError('email')">
           Enter a valid email.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Mobile No</mat-label>
-        <input matInput type="text" formControlName="mobileNo" required />
-        <mat-error *ngIf="productForm.get('mobileNo')?.hasError('required')">
+        <input matInput type="text" formControlName="MobileNo" required />
+        <mat-error *ngIf="productForm.get('MobileNo')?.hasError('required')">
           Mobile number is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('mobileNo')?.hasError('pattern')">
+        <mat-error *ngIf="productForm.get('MobileNo')?.hasError('pattern')">
           Enter a valid 10-digit mobile number.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>First Name</mat-label>
-        <input matInput type="text" formControlName="firstName" required />
-        <mat-error *ngIf="productForm.get('firstName')?.hasError('required')">
+        <input matInput type="text" formControlName="FirstName" required />
+        <mat-error *ngIf="productForm.get('FirstName')?.hasError('required')">
           First name is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('firstName')?.hasError('maxlength')">
+        <mat-error *ngIf="productForm.get('FirstName')?.hasError('maxlength')">
           Maximum length is 50 characters.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Last Name</mat-label>
-        <input matInput type="text" formControlName="lastName" required />
-        <mat-error *ngIf="productForm.get('lastName')?.hasError('required')">
+        <input matInput type="text" formControlName="LastName" required />
+        <mat-error *ngIf="productForm.get('LastName')?.hasError('required')">
           Last name is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('lastName')?.hasError('maxlength')">
+        <mat-error *ngIf="productForm.get('LastName')?.hasError('maxlength')">
           Maximum length is 50 characters.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Member Type</mat-label>
-        <input matInput type="text" formControlName="memberType" required />
-        <mat-error *ngIf="productForm.get('memberType')?.hasError('required')">
+        <input matInput type="text" formControlName="MemberType" required />
+        <mat-error *ngIf="productForm.get('MemberType')?.hasError('required')">
           Member type is required.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Pin Code</mat-label>
-        <input matInput type="text" formControlName="pinCode" required />
-        <mat-error *ngIf="productForm.get('pinCode')?.hasError('required')">
+        <input matInput type="text" formControlName="PinCode" required />
+        <mat-error *ngIf="productForm.get('PinCode')?.hasError('required')">
           Pin code is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('pinCode')?.hasError('pattern')">
+        <mat-error *ngIf="productForm.get('PinCode')?.hasError('pattern')">
           Enter a valid 6-digit pin code.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Vehicle Registration No</mat-label>
-        <input matInput type="text" formControlName="vehicleRegistrationNo" required />
-        <mat-error *ngIf="productForm.get('vehicleRegistrationNo')?.hasError('required')">
+        <input matInput type="text" formControlName="VehicleRegistrationNo" required />
+        <mat-error *ngIf="productForm.get('VehicleRegistrationNo')?.hasError('required')">
           Vehicle registration number is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('vehicleRegistrationNo')?.hasError('maxlength')">
+        <mat-error *ngIf="productForm.get('VehicleRegistrationNo')?.hasError('maxlength')">
           Maximum length is 50 characters.
         </mat-error>
       </mat-form-field>
       
       <mat-form-field appearance="outline" class="grid-item">
         <mat-label>Battery Serial No</mat-label>
-        <input matInput type="text" formControlName="batterySerialNo" required />
-        <mat-error *ngIf="productForm.get('batterySerialNo')?.hasError('required')">
+        <input matInput type="text" formControlName="BatterySerialNo" required />
+        <mat-error *ngIf="productForm.get('BatterySerialNo')?.hasError('required')">
           Battery serial number is required.
         </mat-error>
-        <mat-error *ngIf="productForm.get('batterySerialNo')?.hasError('maxlength')">
+        <mat-error *ngIf="productForm.get('BatterySerialNo')?.hasError('maxlength')">
           Maximum length is 50 characters.
         </mat-error>
       </mat-form-field>
@@ -119,7 +119,7 @@
         <mat-label>Product Type</mat-label>
         <mat-select formControlName="productType">
           <mat-option *ngFor="let product of productTypes" [value]="product.id">
-            {{ product.name }}
+            {{ product }}
           </mat-option>
         </mat-select>
       </mat-form-field>

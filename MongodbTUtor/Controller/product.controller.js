@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ProductMaster = require('../models/productMaster');
-
+const Member = require('../models/user.model');
 const router = require('express').Router();
 
 
@@ -10,11 +10,26 @@ const router = require('express').Router();
 
 
 // CREATE: Add a new product
-router.post('/', async (req, res) => {
+router.post('/productMasters', async (req, res) => {
+  const { productData, userData } = req.body;
+
   try {
-    const product = new ProductMaster(req.body);
+    // Save Product data
+  console.log(req.body);
+  console.log(req.body.productData);
+    const product = new ProductMaster(productData);
     const savedProduct = await product.save();
-    res.status(201).json(savedProduct);
+
+    // Save User data
+    const user = new Member(userData);
+    const savedUser = await user.save();
+
+    // Respond with saved data
+    res.status(201).json({
+      message: 'Data saved successfully',
+      product: savedProduct,
+      user: savedUser
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

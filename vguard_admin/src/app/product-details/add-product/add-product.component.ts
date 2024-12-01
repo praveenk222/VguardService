@@ -15,8 +15,8 @@ export class AddProductComponent  implements OnInit{
   productForm:FormGroup;
   measurements:any;
   pid:any=0;
-  productTypes:[];
-  vehicleTypes:[];
+  vehicleTypes:[{id:1,name:'two wheeler'}];
+  productTypes:[{id:1,name:'battery'}];
   constructor(private productService:OrderService,    private route: ActivatedRoute, 
     private spinners:NgxSpinnerService,private fb:FormBuilder,
     private router:Router,private alertsr:SweetAlertServiceService){
@@ -31,29 +31,29 @@ export class AddProductComponent  implements OnInit{
   }
   this.getMeasurement()
   this.productForm = this.fb.group({
-    productID: [null, [Validators.required]], // Required field
-    productName: ['', [Validators.maxLength(150)]], // Optional with max length
-    vehicleRegistrationNo: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
-    batterySerialNo: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
-    purchaseDate: [null, [Validators.required]], // Required field
-    model: ['', [Validators.maxLength(200)]], // Optional with max length
-    category: [null], // Optional
-    quantity: [null], // Optional
-    brand: ['', [Validators.maxLength(50)]], // Optional with max length
-    size: ['', [Validators.maxLength(100)]], // Optional with max length
-    isActive: [true, [Validators.required]], // Required field with default value
-    createdOn: [new Date(), []], // Default to current date
-    modifiedOn: [null], // Optional
-    lastServiceDate: [null], // Optional
-    vehicleType: [null], // Optional
-    productType: [null] ,
+    ProductID: [1213,null], // Required field
+    ProductName: ['tetet', [Validators.maxLength(150)]], // Optional with max length
+    VehicleRegistrationNo: ['tr3333', [ Validators.maxLength(50)]], // Required with max length
+    BatterySerialNo: ['3eee3ee', [ Validators.maxLength(50)]], // Required with max length
+    PurchaseDate: ['2024-12-01T08:00:00.000Z',null, ], // Required field
+    // model: ['', [Validators.maxLength(200)]], // Optional with max length
+    // category: [null], // Optional
+    // quantity: [null], // Optional
+    // brand: ['', [Validators.maxLength(50)]], // Optional with max length
+    // size: ['', [Validators.maxLength(100)]], // Optional with max length
+    IsActive: [true, ], // Required field with default value
+    CreatedOn: [new Date(), []], // Default to current date
+    ModifiedOn: [null], // Optional
+    LastServiceDate: [null], // Optional
+    VehicleType: [null], // Optional
+    ProductType: [null] ,
       // Newly added fields
-      emailID: ['', [Validators.required, Validators.email]], // Required and valid email
-      mobileNo: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // Required, 10-digit number
-      firstName: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
-      lastName: ['', [Validators.required, Validators.maxLength(50)]], // Required with max length
-      memberType: ['', [Validators.required]], // Required field
-      pinCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]], // Required, 6-digit pin code
+      EmailID: ['prvn018@gmail.com', [ Validators.email]], // Required and valid email
+      MobileNo: ['8519899222', [ Validators.pattern(/^\d{10}$/)]], // Required, 10-digit number
+      FirstName: ['tetet', [ Validators.maxLength(50)]], // Required with max length
+      LastName: ['tetet', [ Validators.maxLength(50)]], // Required with max length
+      MemberType: ['2', ], // Required field
+      PinCode: ['455555', [ Validators.pattern(/^\d{6}$/)]], // Required, 6-digit pin code
     // Optional
   });
 }
@@ -64,23 +64,50 @@ getPoruductByID(){
   })
 }
   submitForm() {
-    this.spinners.show();
-    const data=this.productForm.value;
    
+    const productData={}
+    const  userData ={}
+    // const data=this.productForm.value;
+    const data=
+      {
+        "productData": {
+          "ProductID": 1313,
+          "ProductName": "Battery",
+          "VehicleRegistrationNo": "KA01AB1234",
+          "BatterySerialNo": "BATT123456789",
+          "PurchaseDate": "2024-12-01",
+          "IsActive": true
+        },
+        "userData": {
+          "EmailID": "john.doe@example.com",
+          "MobileNo": "9876543210",
+          "FirstName": "John",
+          "LastName": "Doe",
+          "MemberType": "Premium",
+          "PinCode": "560001"
+        }
+    }
+    data.productData.ProductID++;
     if (this.productForm.valid) {
-      this.productService.createProduct(data).subscribe((res: any) => {
-      if(res.isSuccess){
-        this.alertsr.showSuccess('Product',res.Message);
-        this.spinners.hide();
+      this.spinners.show();
+      this.productService.createProduct(data).subscribe(
+        (res: any) => {
+          if(res.isSuccess){
+            this.alertsr.showSuccess('Product',res.Message);
+            this.spinners.hide();
 
-        this.productForm.reset();
-        this.router.navigateByUrl('getProduct')
-      }
-      else{
-        this.alertsr.showFailure('Please fill all details')
-        this.spinners.hide();
-      }
-    })
+            this.productForm.reset();
+            this.router.navigateByUrl('getProduct')
+          }
+          else{
+            this.spinners.hide();
+            this.alertsr.showFailure('Please fill all details')
+          }
+    },(error:any)=>{
+      this.spinners.hide();
+    }
+  
+  )
     }
 
 }

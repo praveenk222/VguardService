@@ -30,7 +30,7 @@ export class ProductDetailsComponent {
   }
 
   getProduct() {
-    this.apiService.getProductdetails().subscribe((res: any) => {
+    this.apiService.getAllProducts().subscribe((res: any) => {
       this.dataSource.data = res;
       if(res){
 

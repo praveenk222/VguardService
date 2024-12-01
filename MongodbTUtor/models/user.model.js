@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
-  UserID: { type: Number, required: true },
-  EmailID: { type: String, required: true },
+  UserID: { type: Number, required: false },
+  EmailID: { type: String, required: false },
   MobileNo: { type: String, required: true },
-  Password: { type: String, required: true },
+  Password: { type: String, required: false },
   FirstName: { type: String, required: true },
   LastName: { type: String, required: true },
-  MemberType: { type: String, required: true },
+  MemberType: { type: String, required: false },
   OTP: { type: String, required: false },
   IsOTPSent: { type: Boolean, default: false },
   OTPSentDate: { type: Date, required: false },
