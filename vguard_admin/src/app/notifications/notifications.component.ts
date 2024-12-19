@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
 import { SweetAlertServiceService } from '../services/sweet-alert-service.service';
 import { OrderService } from '../order.service';
 
+
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+  selector: 'app-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrl: './notifications.component.css'
 })
-export class ProductDetailsComponent {
-  displayedColumns: string[] = [ 'Name', 'PurchaseDate','ExpiryDate','SerialNo', 'ProductAvailable', 'ShortDescription','actions'];
+export class NotificationsComponent {
+displayedColumns: string[] = [ 'Name', 'PurchaseDate','ExpiryDate','SerialNo', 'ProductAvailable', 'ShortDescription','actions'];
   dataSource = new MatTableDataSource<any>([]);
   pageSizeOptions: number[] = [5, 10, 20];
   totalItems: number = 100;
@@ -67,4 +68,4 @@ export class ProductDetailsComponent {
     const filtervalue=(e.target as HTMLInputElement).value;
     this.dataSource.filter=filtervalue.trim().toLowerCase();
   }
-}
+} 

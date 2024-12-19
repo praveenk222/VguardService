@@ -15,8 +15,10 @@ import { UsersService } from '../services/users.service';
 export class DashbordComponent {
   dashboardData:any=[];
   TotalVehicles: any=0;
-  TotalAMount: any=0;
   TotalBookings: any=0;
+  TotalAMount: any=0;
+  TotalUsers: any=0;
+  TotalProducts: any=0;
   TotalAvilable: any=0;
   // constructor(private dialogService: DialogPopupService) {
   constructor(private dialog:MatDialog,private us:UsersService) {
@@ -24,7 +26,19 @@ export class DashbordComponent {
   //  this.getdasboarData()
   }
 ngOnInit(){
-  
+  this.getdasboarData();
+}
+getdasboarData(){
+  this.us.getdasboarddata().subscribe((res:any)=>{
+    console.log(res)
+    if(res){
+      this.dashboardData=res;
+      this.TotalProducts=res.data.activeProductsCount;
+      this.TotalUsers=res.data.activeUsersCount;
+      
+      this.cards
+    }
+  })
 }
   openDialog() {
     const timeout = 2000;
@@ -113,21 +127,7 @@ ngOnInit(){
     { data: [65, 59, 80, 81, 56, 55, 40], label: "Series A" },
     { data: [28, 48, 40, 19, 86, 27, 90], label: "Series B" }
   ];
-getdasboarData(){
-  this.us.getdasboarddata().subscribe((res:any)=>{
-    console.log(res)
-    if(res){
 
-      this.dashboardData=res;
-      this.TotalVehicles=this.dashboardData[0].TotalProducts;
-      this.TotalAMount=this.dashboardData[0].TotalBookingAmount;
-      this.TotalAvilable=this.dashboardData[0].TotalAvilable;
-      this.TotalBookings=this.dashboardData[0].CanceledBookings;
-      console.log(this.cards)
-      this.cards
-    }
-  })
-}
 public lineChartData = [
   { data: [10, 15, 25, 30, 20, 35], label: 'Deliveries' }
 ];

@@ -22,7 +22,7 @@ export class OrderService {
     return this.http.post(this.apiUrl+`members`,data)
   }
   getAllUsers():Observable<any>{
-    return this.http.get(this.apiUrl+`members`)
+    return this.http.get(this.apiUrl+`users`)
   }
   //users
   //product

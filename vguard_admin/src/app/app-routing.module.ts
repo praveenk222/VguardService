@@ -8,6 +8,8 @@ import { MesurmentLookupComponent } from './mesurment-lookup/mesurment-lookup.co
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { RecieptComponent } from './reciept/reciept.component';
+import { UsersComponent } from './users/users.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
@@ -17,10 +19,11 @@ const routes: Routes = [
 {path:'',component:LoginComponent},
 // {path:'',component:DashbordComponent},
 {path:'mesurement',component:MeasuremetTypeComponent},
-{path:'mlookup',component:MesurmentLookupComponent},
+{path:'lookup',component:MesurmentLookupComponent},
 {path:'dashboard',component:DashbordComponent},
-{path:'inventory',component:InventoryComponent},
-{path:'reciept',component:RecieptComponent}
+{path:'users',component:UsersComponent},
+{path:'reciept',component:RecieptComponent},
+{path:'notification',component:NotificationsComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

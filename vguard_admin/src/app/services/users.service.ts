@@ -137,7 +137,7 @@ getordersummeryByBookingNo(bookingNo:string){
  
  
   getdasboarddata(){
-    return this.http.get(this.apiUrl+'/customers/getDashboardData')
+    return this.http.get(this.apiUrl+'/dashboard')
   }
   getadminUsers(){
     return this.http.get(this.apiUrl+'customers/getAdminUserList')

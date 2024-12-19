@@ -14,6 +14,7 @@ const memberSchema = new Schema({
   IsOTPVerified: { type: Boolean, default: false },
   IsEmailVerified: { type: Boolean, default: false },
   IsActive: { type: Boolean, default: true },
+  IsAgreed: { type: Boolean, default: true },
   CreatedOn: { type: Date, default: Date.now },
   ProfilePhoto: { type: String, required: false },
   Token: { type: String, required: false },

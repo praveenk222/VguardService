@@ -6,6 +6,8 @@ const productMasterSchema = new mongoose.Schema({
   VehicleRegistrationNo: { type: String, maxlength: 50,required: true },
   BatterySerialNo: { type: String, maxlength: 50 , required: true,},
   PurchaseDate: { type: Date, required: true, },
+  PurchaseDate: { type: Date, required: true, },
+  ExpiryDate: { type: Date, required: true, },
   Model: { type: String, maxlength: 200 },
   Category: { type: Number },
   Quntity: { type: Number },

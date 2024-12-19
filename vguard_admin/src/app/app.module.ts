@@ -77,6 +77,8 @@ import { RecieptComponent } from './reciept/reciept.component';
 import { PlumbingListComponent } from './inventory/plumbing-list/plumbing-list.component';
 import { ElectricListComponent } from './inventory/electric-list/electric-list.component';
 import { SantrylistComponent } from './inventory/santrylist/santrylist.component';
+import { UsersComponent } from './users/users.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,8 @@ import { SantrylistComponent } from './inventory/santrylist/santrylist.component
     PlumbingListComponent,
     ElectricListComponent,
     SantrylistComponent,
+    UsersComponent,
+    NotificationsComponent,
 
   ],
   imports: [
