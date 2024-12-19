@@ -28,6 +28,8 @@ this.spinner.show();
       // Handle login logic here
       this.users.loginAdmin(this.loginForm.value).subscribe(
         res=>{
+          this.spinner.hide();
+
           console.log(res)
           if(res){
             this.salert.showSuccess('Login done','')

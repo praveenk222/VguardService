@@ -14,9 +14,9 @@ import { RecieptComponent } from './reciept/reciept.component';
 const routes: Routes = [
   {path:'getProduct',component:ProductDetailsComponent},
   {path:'addproduct/:id',component:AddProductComponent},
-// {path:'/login',component:LoginComponent},
+{path:'',component:LoginComponent},
 // {path:'',component:DashbordComponent},
-{path:'',component:MeasuremetTypeComponent},
+{path:'mesurement',component:MeasuremetTypeComponent},
 {path:'mlookup',component:MesurmentLookupComponent},
 {path:'dashboard',component:DashbordComponent},
 {path:'inventory',component:InventoryComponent},

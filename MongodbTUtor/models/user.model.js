@@ -7,7 +7,6 @@ const memberSchema = new Schema({
   Password: { type: String, required: false },
   FirstName: { type: String, required: true },
   LastName: { type: String, required: true },
-  MemberType: { type: String, required: false },
   OTP: { type: String, required: false },
   IsOTPSent: { type: Boolean, default: false },
   OTPSentDate: { type: Date, required: false },
@@ -21,6 +20,7 @@ const memberSchema = new Schema({
   ParentID: { type: String, required: false },
   IsRegisteredByMobile: { type: Boolean, default: false },
   PinCode:{ type: Number, required: false },
+  UserType: { type: String, required: true, enum: ['Admin', 'Customer', 'Vendor','SuperAdmin'] }
 });
 
 module.exports = mongoose.model('Member', memberSchema);

@@ -50,7 +50,7 @@ show(){
     });
   }
   loginAdmin(data:any):Observable<any>{
-  return this.http.post(this.apiUrl+`/members/login`, data);
+  return this.http.post(this.apiUrl+`/login`, data);
   }
   signup(data:any):Observable<any>{
     return this.http.post(this.m_apiUrl+`/members`,data)

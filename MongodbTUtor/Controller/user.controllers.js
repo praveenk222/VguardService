@@ -26,6 +26,7 @@ router.post('/members', async (req, res) => {
         ParentID: req.body.ParentID,
         IsRegisteredByMobile: req.body.IsRegisteredByMobile,
         PinCode:req.body.PinCode,
+        UserType:req.body.UserType
         
       });
   
@@ -40,27 +41,60 @@ router.post('/members', async (req, res) => {
   
 
 router.post('/login',(req,res)=>{
-    
-    User.find({email:req.body.email}).exec().then((result)=>{
-        if(result.length<1){
-         return res.json({success:false,message:'User not found'})
-        }
-        const user = result[0];
-        bcrypt.compare(req.body.password,user.password,(err,ret)=>{
-            if(ret){
-                const payload={
-                  userId:user._id
-                }
-                const token=jwt.sign(payload,"webBatch", { expiresIn: '2h' })
-                return res.json({success:true,token:token,message:"login successfully"})
-               
-            }else{
-                return res.json({success:false,message:"login failed"})
-            }
+    try{
+console.log(req.body);
+        const { UserName, Password } = req.body;
+        
+        if (!UserName || !Password) {
+            return res.status(400).json({
+                success: false,
+                message: 'UserName (email or mobile number) and password are required'
+            });
+        }        
+     
+        Member.findOne({
+            $or: [{ EmailID: UserName }, { MobileNo: UserName }]})
+    .exec()
+        .then((result)=>{
+            console.log(result)
+            if (!result) {
+                return res.status(404).json({
+                  success: false,
+                  message: 'User not found'
+                });
+              }
+          
+              // Check if the account is active
+              if (!result.IsActive) {
+                return res.status(403).json({
+                  success: false,
+                  message: 'User account is inactive'
+                });
+              }
+              let isPasswordValid=false;
+              if (Password === result.Password) {
+                isPasswordValid = true;
+              }
+              console.log()
+              if (!isPasswordValid) {
+                return res.status(401).json({
+                  success: false,
+                  message: 'Invalid password'
+                });
+              }
+            res.json({success:true,data:result})
+        }).catch((err)=>{
+            res.json({success:false,message:err})
         })
-    }).catch(err=>{
-        res.json({success:false,message:'Authentication failed'})
-    })
+    
+} catch (error) {
+  console.error('Error during login:', error);
+  res.status(500).json({
+    success: false,
+    message: 'An error occurred during login',
+    error: error.message
+  });
+}
 });
 
 router.get('/profile',(req,res)=>{
@@ -75,7 +109,10 @@ User.findById(userId)
   
 })
 router.get('/users',(req,res)=>{
-    Member.find()
+     Member.find()
+      .sort({ CreatedOn: -1 }) // Sort by CreatedOn in descending order (-1 for latest first)
+
+   
 .exec()
     .then((result)=>{
         res.json({success:true,data:result})
