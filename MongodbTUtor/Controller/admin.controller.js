@@ -7,16 +7,23 @@ const ProductMaster = require('../models/productMaster');
 // CREATE: Add a new address
 router.get('/dashboard', async (req, res) => {
   try {
-    const [activeUsersCount, activeProductsCount] = await Promise.all([
+    const today = new Date();
+const thirtyDaysFromNow = new Date();
+thirtyDaysFromNow.setDate(today.getDate() + 30);
+    const [activeUsersCount, activeProductsCount,RenewalProductsCount] = await Promise.all([
       Member.countDocuments({ IsActive: true }), // Count active users
-      ProductMaster.countDocuments({ IsActive: true }) // Count active products
+      ProductMaster.countDocuments({ IsActive: true }) ,// Count active products
+      ProductMaster.countDocuments({IsActive: true,
+      ExpiryDate: { $gte: today, $lte: thirtyDaysFromNow }, // Filter ExpiryDate within the range
+})
     ]);
 
     res.status(200).json({
       success: true,
       data: {
         activeUsersCount,
-        activeProductsCount
+        activeProductsCount,
+        RenewalProductsCount
       }
     });
   } catch (error) {

@@ -38,9 +38,11 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { NgChartsModule } from "ng2-charts";
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import {MatNativeDateModule} from '@angular/material/core';
 @NgModule({
   imports: [
+    // MatNativeDateModule,
+    MatDatepickerModule,
     CommonModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -118,7 +120,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MatTooltipModule,
     MatTreeModule,
     NgChartsModule,
-    NgxSpinnerModule
+    MatNativeDateModule ,
+    NgxSpinnerModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule {}

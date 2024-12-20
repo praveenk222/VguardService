@@ -18,7 +18,5 @@ export class MeasuremetTypeService {
   getLookups(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl+`/lookup`);
   }
-  getmesurmentLookups(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl+`/mesurmentlookup`);
-  }
+ 
 }

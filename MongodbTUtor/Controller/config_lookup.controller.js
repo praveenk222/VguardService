@@ -19,7 +19,7 @@ router.post('/lookup', async (req, res) => {
 // READ: Get all lookups
 router.get('/lookup', async (req, res) => {
   try {
-    const lookups = await Lookup.find();
+    const lookups = await Lookup.find().sort({ CreatedOn: -1 });
     res.status(200).json(lookups);
   } catch (err) {
     res.status(500).json({ error: err.message });

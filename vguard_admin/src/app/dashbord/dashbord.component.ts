@@ -18,6 +18,7 @@ export class DashbordComponent {
   TotalBookings: any=0;
   TotalAMount: any=0;
   TotalUsers: any=0;
+  RenewalProductsCount: any=0;
   TotalProducts: any=0;
   TotalAvilable: any=0;
   // constructor(private dialogService: DialogPopupService) {
@@ -35,6 +36,7 @@ getdasboarData(){
       this.dashboardData=res;
       this.TotalProducts=res.data.activeProductsCount;
       this.TotalUsers=res.data.activeUsersCount;
+      this.RenewalProductsCount=res.data.RenewalProductsCount;
       
       this.cards
     }

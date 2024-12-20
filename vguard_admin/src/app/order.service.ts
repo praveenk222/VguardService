@@ -30,8 +30,14 @@ export class OrderService {
   createProduct(data:any):Observable<any>{
     return this.http.post(this.apiUrl+`productMasters`,data)
   }
+  updateProduct(data:any,id:string):Observable<any>{
+    return this.http.put(this.apiUrl+`productMasters/${id}`,data)
+  }
   getAllProducts():Observable<any>{
     return this.http.get(this.apiUrl+`productMasters`)
+  }
+  getAllnotification():Observable<any>{
+    return this.http.get(this.apiUrl+`notification`)
   }
   getProductdetails(id:number):Observable<any>{
     return this.http.get(this.apiUrl+`productMasters`)

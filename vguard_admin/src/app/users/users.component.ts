@@ -32,7 +32,7 @@ export class UsersComponent {
       this.dataSource.data = res.data;
       if(res){
 
-        this.totalItems=res.length;
+        this.totalItems=res.data.length;
       }
     });
   }

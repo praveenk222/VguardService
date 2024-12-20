@@ -6,7 +6,8 @@ const productMasterSchema = new mongoose.Schema({
   VehicleRegistrationNo: { type: String, maxlength: 50,required: true },
   BatterySerialNo: { type: String, maxlength: 50 , required: true,},
   PurchaseDate: { type: Date, required: true, },
-  PurchaseDate: { type: Date, required: true, },
+  ExpiryDate: { type: Date, required: true, },
+  VehicleType: { type: String },
   ExpiryDate: { type: Date, required: true, },
   Model: { type: String, maxlength: 200 },
   Category: { type: Number },
@@ -17,11 +18,22 @@ const productMasterSchema = new mongoose.Schema({
   CreatedOn: { type: Date, default: Date.now },
   ModifiedOn: { type: Date },
   LastServiceDate: { type: Date },
-  VehicleType: { type: Number },
   ProductType: { type: Number },
   Member: { type: mongoose.Schema.Types.ObjectId, ref: 'Member' },
 });
-
+// Apply a default transformation to format dates
+productMasterSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    // Format date fields
+    if (ret.PurchaseDate) {
+      ret.PurchaseDate = new Date(ret.PurchaseDate).toISOString().split('T')[0];
+    }
+    if (ret.ExpiryDate) {
+      ret.ExpiryDate = new Date(ret.ExpiryDate).toISOString().split('T')[0];
+    }
+    return ret;
+  }
+});
 const ProductMaster = mongoose.model('ProductMaster', productMasterSchema);
 
 module.exports = ProductMaster;

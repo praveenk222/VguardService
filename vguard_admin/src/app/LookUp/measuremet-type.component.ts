@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { MeasuremetTypeService } from '../measuremet-type.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { SweetAlertServiceService } from '../services/sweet-alert-service.service';
-
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-measuremet-type',
   templateUrl: './measuremet-type.component.html',
   styleUrl: './measuremet-type.component.css'
 })
 export class MeasuremetTypeComponent {
-  displayedColumns: string[] = ['CustomerID', 'TotalAmount', 'OrderDate', 'IsCompleted','actions'];
+  displayedColumns: string[] = [ 'Lookupdesc', 'LookupCode', 'IsCompleted','actions'];
   lookupForm!: FormGroup; // FormGroup for reactive form
   lookups: any[] = []; // Array to hold retrieved lookups
   isShow:boolean=false;
   dataSource = new MatTableDataSource<any>();
+  pageSizeOptions: number[] = [5, 10, 20];
+    totalItems: number = 100;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private fb: FormBuilder, private lookupService: MeasuremetTypeService,
     private alerts:SweetAlertServiceService
   ) {
@@ -84,11 +87,16 @@ export class MeasuremetTypeComponent {
         // this.lookups = data;
          // Store the retrieved lookups in the component's array
          this.dataSource.data=data;
-        console.log('Lookups retrieved successfully', this.lookups);
+         this.totalItems=data.length;
       },
       error => {
         console.error('Error retrieving lookups', error);
       }
     );
+  }
+
+  applyfilter(e: Event) {
+    const filtervalue = (e.target as HTMLInputElement).value;
+    this.dataSource.filter = filtervalue.trim().toLowerCase();
   }
 }

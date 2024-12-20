@@ -15,7 +15,7 @@ import { OrderService } from '../order.service';
   styleUrl: './notifications.component.css'
 })
 export class NotificationsComponent {
-displayedColumns: string[] = [ 'Name', 'PurchaseDate','ExpiryDate','SerialNo', 'ProductAvailable', 'ShortDescription','actions'];
+displayedColumns: string[] = [ 'UserName','Message', 'CreateOn', 'ProductAvailable', 'actions'];
   dataSource = new MatTableDataSource<any>([]);
   pageSizeOptions: number[] = [5, 10, 20];
   totalItems: number = 100;
@@ -31,7 +31,7 @@ displayedColumns: string[] = [ 'Name', 'PurchaseDate','ExpiryDate','SerialNo', '
   }
 
   getProduct() {
-    this.apiService.getAllProducts().subscribe((res: any) => {
+    this.apiService.getAllnotification().subscribe((res: any) => {
       this.dataSource.data = res;
       if(res){
 

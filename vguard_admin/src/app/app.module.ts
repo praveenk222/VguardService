@@ -68,7 +68,6 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './login/login.component';
 import { MeasuremetTypeComponent } from './LookUp/measuremet-type.component';
-import { MesurmentLookupComponent } from './mesurment-lookup/mesurment-lookup.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { MaterialModule } from './Modules/material.module';
 import { SuccessInterceptor } from './services/toastersuccess.interceptor';
@@ -88,7 +87,6 @@ import { NotificationsComponent } from './notifications/notifications.component'
     NavComponent,
     LoginComponent,
     MeasuremetTypeComponent,
-    MesurmentLookupComponent,
     DashbordComponent,
     InventoryComponent,
     RecieptComponent,

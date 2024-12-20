@@ -29,18 +29,21 @@ productData.MemberID= user._id
     // Respond with saved data
     res.status(201).json({
       message: 'Data saved successfully',
+      isSuccess:true,
       product: savedProduct,
       user: savedUser
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ isSuccess:false,error: err.message });
   }
 });
 
 // READ: Get all products
 router.get('/productMasters', async (req, res) => {
   try {
-    const products = await ProductMaster.find();
+    const products = await ProductMaster
+                                      .find({ IsActive: true })
+                                      .sort({ CreatedOn: -1 });
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -71,10 +74,10 @@ router.get('/productMasters/:id', async (req, res) => {
 router.put('/productMasters/:id', async (req, res) => {
   try {
     const updatedProduct = await ProductMaster.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedProduct) return res.status(404).json({ error: 'Product not found' });
-    res.status(200).json(updatedProduct);
+    if (!updatedProduct) return res.status(404).json({ isSuccess:false, error: 'Product not found' });
+    res.status(200).json({ isSuccess:true,data:updatedProduct});
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({ isSuccess:true,message: err.message });
   }
 });
 
@@ -83,9 +86,9 @@ router.delete('/productMasters/:id', async (req, res) => {
   try {
     const deletedProduct = await ProductMaster.findByIdAndDelete(req.params.id);
     if (!deletedProduct) return res.status(404).json({ error: 'Product not found' });
-    res.status(200).json({ message: 'Product deleted successfully' });
+    res.status(200).json({ isSuccess:true, message: 'Product deleted successfully' });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ isSuccess:false, error: err.message });
   }
 });
 
